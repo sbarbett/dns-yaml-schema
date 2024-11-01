@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["CNAME"]
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the record, which may be '@' for the root of the zone or a specific subdomain."
+    },
+    "value": {
+      "type": "string",
+      "description": "The canonical domain name that this CNAME points to."
+    },
+    "ttl": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The time-to-live for this DNS record in seconds."
+    }
+  },
+  "required": ["type", "name", "value"],
+  "additionalProperties": false
+}

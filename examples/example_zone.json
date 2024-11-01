@@ -1,0 +1,37 @@
+{
+  "domain": "example.com",
+  "ttl": 3600,
+  "records": [
+    {
+      "type": "A",
+      "name": "@",
+      "value": "192.0.2.1",
+      "ttl": 86400
+    },
+    {
+      "type": "AAAA",
+      "name": "www",
+      "value": "2001:db8::1",
+      "ttl": 3600
+    },
+    {
+      "type": "CNAME",
+      "name": "mail",
+      "value": "mailserver.example.com.",
+      "ttl": 3600
+    },
+    {
+      "type": "MX",
+      "name": "@",
+      "value": "mail.example.com.",
+      "priority": 10,
+      "ttl": 7200
+    },
+    {
+      "type": "TXT",
+      "name": "@",
+      "value": "v=spf1 include:_spf.example.com ~all",
+      "ttl": 3600
+    }
+  ]
+}

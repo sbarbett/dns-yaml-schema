@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "domain": {
+      "type": "string",
+      "description": "The domain name for the DNS zone."
+    },
+    "ttl": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The default TTL for all records unless overridden at the record level."
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "$ref": "./schema/a_record.json" },
+          { "$ref": "./schema/aaaa_record.json" },
+          { "$ref": "./schema/cname_record.json" },
+          { "$ref": "./schema/mx_record.json" },
+          { "$ref": "./schema/txt_record.json" }
+        ]
+      }
+    }
+  },
+  "required": ["domain", "records"],
+  "additionalProperties": false
+}

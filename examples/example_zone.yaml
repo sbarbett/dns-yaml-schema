@@ -1,0 +1,24 @@
+domain: example.com
+records:
+- name: '@'
+  ttl: 86400
+  type: A
+  value: 192.0.2.1
+- name: www
+  ttl: 3600
+  type: AAAA
+  value: 2001:db8::1
+- name: mail
+  ttl: 3600
+  type: CNAME
+  value: mailserver.example.com.
+- name: '@'
+  priority: 10
+  ttl: 7200
+  type: MX
+  value: mail.example.com.
+- name: '@'
+  ttl: 3600
+  type: TXT
+  value: v=spf1 include:_spf.example.com ~all
+ttl: 3600
