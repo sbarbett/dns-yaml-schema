@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["PTR"]
+    },
+    "name": {
+      "type": "string",
+      "description": "The reverse DNS name that this PTR record applies to (e.g., '1.2.0.192.in-addr.arpa' for the IP address 192.0.2.1)."
+    },
+    "value": {
+      "type": "string",
+      "description": "The domain name to which this PTR record points."
+    },
+    "ttl": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The time-to-live for this DNS record in seconds."
+    }
+  },
+  "required": ["type", "name", "value"],
+  "additionalProperties": false
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["HINFO"]
+    },
+    "name": {
+      "type": "string",
+      "description": "The domain or subdomain that this HINFO record applies to."
+    },
+    "cpu": {
+      "type": "string",
+      "description": "A description of the CPU type of the host."
+    },
+    "os": {
+      "type": "string",
+      "description": "A description of the operating system of the host."
+    },
+    "ttl": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The time-to-live for this DNS record in seconds."
+    }
+  },
+  "required": ["type", "name", "cpu", "os"],
+  "additionalProperties": false
+}

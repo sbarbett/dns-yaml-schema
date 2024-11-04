@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["TLSA"]
+    },
+    "name": {
+      "type": "string",
+      "description": "The domain or subdomain that this TLSA record applies to, typically including a port (e.g., '_443._tcp.example.com')."
+    },
+    "usage": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3,
+      "description": "The certificate usage field, indicating how the certificate is used (0-3)."
+    },
+    "selector": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "The selector field, indicating how the certificate association data is presented (0-1)."
+    },
+    "matching_type": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2,
+      "description": "The matching type field, specifying how the certificate data is matched (0-2)."
+    },
+    "certificate_association_data": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]+$",
+      "description": "The hexadecimal representation of the certificate association data."
+    },
+    "ttl": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The time-to-live for this DNS record in seconds."
+    }
+  },
+  "required": ["type", "name", "usage", "selector", "matching_type", "certificate_association_data", "ttl"],
+  "additionalProperties": false
+}

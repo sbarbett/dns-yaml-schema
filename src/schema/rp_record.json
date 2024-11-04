@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["RP"]
+    },
+    "name": {
+      "type": "string",
+      "description": "The domain or subdomain that this RP record applies to."
+    },
+    "mbox": {
+      "type": "string",
+      "description": "The email address of the responsible person, formatted as a domain name (e.g., 'admin.example.com' for 'admin@example.com')."
+    },
+    "txt": {
+      "type": "string",
+      "description": "The domain name that points to additional information about the responsible person."
+    },
+    "ttl": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The time-to-live for this DNS record in seconds."
+    }
+  },
+  "required": ["type", "name", "mbox", "ttl"],
+  "additionalProperties": false
+}

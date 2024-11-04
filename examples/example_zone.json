@@ -77,6 +77,84 @@
         "ipv6hint": ["2001:db8::1"]
       },
       "ttl": 3600
+    },
+    {
+      "type": "CAA",
+      "name": "@",
+      "flags": 0,
+      "tag": "issue",
+      "value": "letsencrypt.org",
+      "ttl": 3600
+    },
+    {
+      "type": "HINFO",
+      "name": "@",
+      "cpu": "Intel",
+      "os": "Linux",
+      "ttl": 3600
+    },
+    {
+      "type": "NAPTR",
+      "name": "@",
+      "order": 100,
+      "preference": 10,
+      "flags": "U",
+      "service": "E2U+sip",
+      "regexp": "!^.*$!sip:info@example.com!",
+      "replacement": ".",
+      "ttl": 3600
+    },
+    {
+      "type": "PTR",
+      "name": "1.2.0.192.in-addr.arpa.",
+      "value": "example.com.",
+      "ttl": 3600
+    },
+    {
+      "type": "RP",
+      "name": "@",
+      "mbox": "admin.example.com",
+      "txt": "info.example.com.",
+      "ttl": 3600
+    },
+    {
+      "type": "TLSA",
+      "name": "_443._tcp.example.com",
+      "usage": 3,
+      "selector": 1,
+      "matching_type": 1,
+      "certificate_association_data": "abc123def456",
+      "ttl": 3600
+    },
+    {
+      "type": "SVCB",
+      "name": "_example._tcp",
+      "priority": 1,
+      "target": "svc.example.com.",
+      "params": {
+        "alpn": "h2",
+        "port": 8443,
+        "ipv4hint": ["192.0.2.1"],
+        "ipv6hint": ["2001:db8::1"]
+      },
+      "ttl": 3600
+    },
+    {
+      "type": "DS",
+      "name": "subdomain",
+      "key_tag": 12345,
+      "algorithm": 8,
+      "digest_type": 2,
+      "digest": "2c1f8d7e3a7f45d2e6e4aee9c1f59a4b4e6d24d0",
+      "ttl": 3600
+    },
+    {
+      "type": "SSHFP",
+      "name": "ssh",
+      "algorithm": 1,
+      "fingerprint_type": 2,
+      "fingerprint": "123456789abcdef123456789abcdef123456789a",
+      "ttl": 3600
     }
   ]
 }

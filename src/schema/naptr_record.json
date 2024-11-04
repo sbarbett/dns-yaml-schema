@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["NAPTR"]
+    },
+    "name": {
+      "type": "string",
+      "description": "The domain or subdomain that this NAPTR record applies to."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The order of the NAPTR record, lower values are preferred."
+    },
+    "preference": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The preference of the NAPTR record, used to set priority among records with the same order."
+    },
+    "flags": {
+      "type": "string",
+      "description": "Flags for the NAPTR record, indicating the record's functionality (e.g., 'U', 'S', 'A', or 'P')."
+    },
+    "service": {
+      "type": "string",
+      "description": "The service for this NAPTR record, typically describing the protocol and service (e.g., 'E2U+sip')."
+    },
+    "regexp": {
+      "type": "string",
+      "description": "The regular expression to rewrite the domain for the desired service."
+    },
+    "replacement": {
+      "type": "string",
+      "description": "The domain name to substitute if the regexp field is not used."
+    },
+    "ttl": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The time-to-live for this DNS record in seconds."
+    }
+  },
+  "required": ["type", "name", "order", "preference", "flags", "service", "regexp", "replacement", "ttl"],
+  "additionalProperties": false
+}

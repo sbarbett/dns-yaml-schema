@@ -32,11 +32,21 @@
           { "$ref": "./schema/mx_record.json" },
           { "$ref": "./schema/txt_record.json" },
           { "$ref": "./schema/srv_record.json" },
-          { "$ref": "./schema/https_record.json" }
+          { "$ref": "./schema/https_record.json" },
+          { "$ref": "./schema/ns_record.json" },
+          { "$ref": "./schema/caa_record.json" },
+          { "$ref": "./schema/hinfo_record.json" },
+          { "$ref": "./schema/naptr_record.json" },
+          { "$ref": "./schema/ptr_record.json" },
+          { "$ref": "./schema/rp_record.json" },
+          { "$ref": "./schema/tlsa_record.json" },
+          { "$ref": "./schema/svcb_record.json" },
+          { "$ref": "./schema/ds_record.json" },
+          { "$ref": "./schema/sshfp_record.json" }
         ]
       }
     }
   },
-  "required": ["domain", "soa", "ns", "records"],
+  "required": ["domain", "soa", "ns"],
   "additionalProperties": false
 }

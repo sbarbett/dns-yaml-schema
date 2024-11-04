@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["CAA"]
+    },
+    "name": {
+      "type": "string",
+      "description": "The domain or subdomain that this CAA record applies to."
+    },
+    "flags": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255,
+      "description": "The flags for the CAA record, indicating policy or behavior. Typically set to 0 or 1."
+    },
+    "tag": {
+      "type": "string",
+      "enum": ["issue", "issuewild", "iodef"],
+      "description": "The tag for the CAA record, indicating the type of authority (issue, issuewild, or iodef)."
+    },
+    "value": {
+      "type": "string",
+      "description": "The value for the tag, such as the CA's domain name or contact URI."
+    },
+    "ttl": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The time-to-live for this DNS record in seconds."
+    }
+  },
+  "required": ["type", "name", "flags", "tag", "value"],
+  "additionalProperties": false
+}

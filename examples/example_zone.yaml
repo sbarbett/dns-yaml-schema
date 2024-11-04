@@ -49,6 +49,67 @@ records:
   target: example.com.
   ttl: 3600
   type: HTTPS
+- flags: 0
+  name: '@'
+  tag: issue
+  ttl: 3600
+  type: CAA
+  value: letsencrypt.org
+- cpu: Intel
+  name: '@'
+  os: Linux
+  ttl: 3600
+  type: HINFO
+- flags: U
+  name: '@'
+  order: 100
+  preference: 10
+  regexp: '!^.*$!sip:info@example.com!'
+  replacement: .
+  service: E2U+sip
+  ttl: 3600
+  type: NAPTR
+- name: 1.2.0.192.in-addr.arpa.
+  ttl: 3600
+  type: PTR
+  value: example.com.
+- mbox: admin.example.com
+  name: '@'
+  ttl: 3600
+  txt: info.example.com.
+  type: RP
+- certificate_association_data: abc123def456
+  matching_type: 1
+  name: _443._tcp.example.com
+  selector: 1
+  ttl: 3600
+  type: TLSA
+  usage: 3
+- name: _example._tcp
+  params:
+    alpn: h2
+    ipv4hint:
+    - 192.0.2.1
+    ipv6hint:
+    - 2001:db8::1
+    port: 8443
+  priority: 1
+  target: svc.example.com.
+  ttl: 3600
+  type: SVCB
+- algorithm: 8
+  digest: 2c1f8d7e3a7f45d2e6e4aee9c1f59a4b4e6d24d0
+  digest_type: 2
+  key_tag: 12345
+  name: subdomain
+  ttl: 3600
+  type: DS
+- algorithm: 1
+  fingerprint: 123456789abcdef123456789abcdef123456789a
+  fingerprint_type: 2
+  name: ssh
+  ttl: 3600
+  type: SSHFP
 soa:
   admin: admin.example.com.
   expire: 604800
