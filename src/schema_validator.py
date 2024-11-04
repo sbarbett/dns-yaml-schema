@@ -3,7 +3,7 @@ import os
 import jsonschema
 from jsonschema import Draft202012Validator
 
-# Load schema for zone validation
+# Load schema
 def load_schema(schema_file):
     schema_path = os.path.abspath(schema_file)
     with open(schema_path, "r") as file:
@@ -34,12 +34,34 @@ def validate_schema(data, schema_file):
     # Resolve all $ref references within the schema
     resolved_schema = resolve_references(schema, base_dir)
 
-    # Create a validator and validate the data
+    # Create a validator
     validator = Draft202012Validator(resolved_schema)
+
+    # Iterate over errors
     errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
     if errors:
         for error in errors:
-            print(f"Validation error: {error.message}")
+            if "oneOf" in error.schema:
+                print(f"Validation error in {'/'.join(map(str, error.path))}: {error.message}")
+
+                # Attempt to validate against each schema
+                for sub_schema in error.schema['oneOf']:
+                    sub_validator = Draft202012Validator(sub_schema)
+                    sub_errors = list(sub_validator.iter_errors(error.instance))
+
+                    # If there are errors and it matches the current record type
+                    if sub_errors:
+                        record_type = error.instance.get("type", "").upper()
+                        if sub_schema.get("properties", {}).get("type", {}).get("enum") == [record_type]:
+                            print(f"\nFailed against schema for record type: {record_type}")
+                            for sub_error in sub_errors:
+                                print(f"Specific error: {sub_error.message}")
+                                print(f"At path: {'/'.join(map(str, sub_error.path))}")
+                            break  # Stop once the relevant schema failure is identified
+            else:
+                # General validation error not involving 'oneOf'
+                print(f"Validation error in {'/'.join(map(str, error.path))}: {error.message}")
+                print(f"Schema path: {'/'.join(map(str, error.schema_path))}")
     else:
         print("Validation successful.")
 

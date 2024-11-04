@@ -19,7 +19,9 @@
           { "$ref": "./schema/aaaa_record.json" },
           { "$ref": "./schema/cname_record.json" },
           { "$ref": "./schema/mx_record.json" },
-          { "$ref": "./schema/txt_record.json" }
+          { "$ref": "./schema/txt_record.json" },
+          { "$ref": "./schema/srv_record.json" },
+          { "$ref": "./schema/https_record.json" }
         ]
       }
     }

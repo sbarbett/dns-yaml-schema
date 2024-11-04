@@ -21,4 +21,23 @@ records:
   ttl: 3600
   type: TXT
   value: v=spf1 include:_spf.example.com ~all
+- name: _sip._tcp
+  port: 5060
+  priority: 10
+  target: sipserver.example.com.
+  ttl: 3600
+  type: SRV
+  weight: 5
+- name: '@'
+  params:
+    alpn: h2
+    ipv4hint:
+    - 192.0.2.1
+    ipv6hint:
+    - 2001:db8::1
+    port: 443
+  priority: 1
+  target: example.com.
+  ttl: 3600
+  type: HTTPS
 ttl: 3600

@@ -32,6 +32,28 @@
       "name": "@",
       "value": "v=spf1 include:_spf.example.com ~all",
       "ttl": 3600
+    },
+    {
+      "type": "SRV",
+      "name": "_sip._tcp",
+      "priority": 10,
+      "weight": 5,
+      "port": 5060,
+      "target": "sipserver.example.com.",
+      "ttl": 3600
+    },
+    {
+      "type": "HTTPS",
+      "name": "@",
+      "priority": 1,
+      "target": "example.com.",
+      "params": {
+        "alpn": "h2",
+        "port": 443,
+        "ipv4hint": ["192.0.2.1"],
+        "ipv6hint": ["2001:db8::1"]
+      },
+      "ttl": 3600
     }
   ]
 }
