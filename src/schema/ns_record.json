@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["NS"]
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the record, typically representing the zone (e.g., '@' for the root)."
+    },
+    "value": {
+      "type": "string",
+      "description": "The hostname of the authoritative name server for the zone."
+    },
+    "ttl": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The time-to-live for this DNS record in seconds."
+    }
+  },
+  "required": ["type", "name", "value", "ttl"],
+  "additionalProperties": false
+}

@@ -10,6 +10,20 @@
     "expire": 604800,
     "minimum": 86400
   },
+  "ns": [
+    {
+      "type": "NS",
+      "name": "@",
+      "value": "ns1.example.com.",
+      "ttl": 3600
+    },
+    {
+      "type": "NS",
+      "name": "@",
+      "value": "ns2.example.com.",
+      "ttl": 3600
+    }
+  ],
   "records": [
     {
       "type": "A",

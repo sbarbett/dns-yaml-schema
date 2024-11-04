@@ -14,6 +14,14 @@
     "soa": {
       "$ref": "./schema/soa_record.json"
     },
+    "ns": {
+      "type": "array",
+      "items": {
+        "$ref": "./schema/ns_record.json"
+      },
+      "minItems": 1,
+      "description": "List of authoritative name servers for this zone. At least one NS record is required."
+    },
     "records": {
       "type": "array",
       "items": {
@@ -29,6 +37,6 @@
       }
     }
   },
-  "required": ["domain", "soa", "records"],
+  "required": ["domain", "soa", "ns", "records"],
   "additionalProperties": false
 }

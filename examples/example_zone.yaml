@@ -1,4 +1,13 @@
 domain: example.com
+ns:
+- name: '@'
+  ttl: 3600
+  type: NS
+  value: ns1.example.com.
+- name: '@'
+  ttl: 3600
+  type: NS
+  value: ns2.example.com.
 records:
 - name: '@'
   ttl: 86400
