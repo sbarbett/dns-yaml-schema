@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The primary name server for this zone."
+    },
+    "admin": {
+      "type": "string",
+      "description": "The contact email address for this zone, formatted as 'admin@example.com'."
+    },
+    "serial": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Serial number for the zone, used in zone transfers."
+    },
+    "refresh": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Refresh interval for the zone in seconds."
+    },
+    "retry": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Retry interval for the zone in seconds."
+    },
+    "expire": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Expire time for the zone in seconds."
+    },
+    "minimum": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Minimum TTL for records in the zone."
+    }
+  },
+  "required": ["name", "admin", "serial", "refresh", "retry", "expire", "minimum"],
+  "additionalProperties": false
+}

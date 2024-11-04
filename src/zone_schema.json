@@ -11,6 +11,9 @@
       "minimum": 0,
       "description": "The default TTL for all records unless overridden at the record level."
     },
+    "soa": {
+      "$ref": "./schema/soa_record.json"
+    },
     "records": {
       "type": "array",
       "items": {
@@ -26,6 +29,6 @@
       }
     }
   },
-  "required": ["domain", "records"],
+  "required": ["domain", "soa", "records"],
   "additionalProperties": false
 }
