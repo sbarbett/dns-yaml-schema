@@ -2,3 +2,6 @@
 .idea/**
 *.kate-swp
 venv/
+sandbox/
+**/__pycache__/
+

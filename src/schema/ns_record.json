@@ -20,6 +20,6 @@
       "description": "The time-to-live for this DNS record in seconds."
     }
   },
-  "required": ["type", "name", "value", "ttl"],
+  "required": ["name", "value", "ttl"],
   "additionalProperties": false
 }
