@@ -6,6 +6,10 @@
       "type": "string",
       "description": "The domain name for the DNS zone."
     },
+    "origin": {
+      "type": "string",
+      "description": "The value of the $ORIGIN directive, which sets the base domain for relative names in the zone."
+    },
     "ttl": {
       "type": "integer",
       "minimum": 0,

@@ -23,6 +23,9 @@ class ConvertBINDToJSON:
                 converted_record = self._default_convert(record, rdata)
 
             if converted_record:
+                # Always remove 'rdcomment' if present
+                if "rdcomment" in converted_record:
+                    del converted_record["rdcomment"]
                 records.append(converted_record)
 
         return records
@@ -42,6 +45,11 @@ class ConvertBINDToJSON:
 
     # Handling NS Record
     def _convert_ns(self, record, rdata):
+        record["value"] = str(rdata.target)
+        return record
+
+    # Handling CNAME Record
+    def _convert_cname(self, record, rdata):
         record["value"] = str(rdata.target)
         return record
 

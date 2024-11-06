@@ -36,7 +36,7 @@ def json_to_bind(json_file_path, bind_file_path, schema_file_path):
 
     with open(json_file_path, "r") as json_file:
         json_data = json.load(json_file)
-    
+
     domain = json_data.get("domain", "")
     zone = dns.zone.Zone(dns.name.from_text(domain))
 
@@ -79,17 +79,27 @@ def bind_to_json(bind_file_path, json_file_path):
         # Read the zone file into a string
         with open(bind_file_path, "r") as bind_file:
             zone_text = bind_file.read()
-        
+
         # Attempt to parse the zone text using dnspython
         zone = dns.zone.from_text(zone_text, origin=None, relativize=False)
 
+        # Extract the default TTL if available
+        default_ttl = getattr(zone, 'default_ttl', None)
+
         json_data = {
             "domain": str(zone.origin),
-            "ttl": 3600,
             "soa": {},
             "ns": [],
             "records": []
         }
+
+        # Include the TTL directive if it was found
+        if default_ttl is not None:
+            json_data["ttl"] = default_ttl
+
+        # Extract $ORIGIN directive if present
+        if zone.origin:
+            json_data["origin"] = str(zone.origin)
 
         converter = ConvertBINDToJSON()
 
